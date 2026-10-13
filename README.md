@@ -16,3 +16,15 @@ Epoch AI's **Chess Puzzles** Inspect task, reconstructed so it can be audited wi
 Logs: https://epoch-benchmarks-production-public.s3.us-east-2.amazonaws.com/inspect_ai_logs/<id>.eval
 (manifest in `audit/logs.csv`).
 
+
+## BFCL (`bench/bfcl`)
+
+`bench/task/bfcl/__init__.py` builds the Berkeley Function-Calling Leaderboard dataset with
+inspect_evals' own loaders, converters, solver and scorer (`inspect_evals/bfcl`, pinned in
+`pyproject.toml` under the `bfcl` extra), minus two gates that only matter for running a
+model: the memory categories' snapshot check and the web-search categories' SerpAPI key
+check. The items of every scored category can therefore be loaded and audited; V1-V3
+attempts generated with it are identical to inspect_evals'. Install with `pip install
+"epoch-bench[bfcl] @ git+<this repo>@<sha>"`. Samples carry `metadata.stratum`, the
+leaderboard's weighting stratum (non_live_ast, live_ast, irrelevance, multi_turn, memory,
+web_search).
