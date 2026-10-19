@@ -28,3 +28,7 @@ attempts generated with it are identical to inspect_evals'. Install with `pip in
 "epoch-bench[bfcl] @ git+<this repo>@<sha>"`. Samples carry `metadata.stratum`, the
 leaderboard's weighting stratum (non_live_ast, live_ast, irrelevance, multi_turn, memory,
 web_search).
+
+## bench/simpleqa_verified_anti_abstention
+
+Epoch AI's SimpleQA Verified variant, reconstructed from Epoch's 64 published leaderboard logs (private source `epoch-research/benchmarks` @ 0bdf247, task version 0): the `codelion/SimpleQA-Verified` mirror at a pinned revision with sample id = row + 1, the question followed by the anti-abstention instruction, Epoch's verbatim grader template with a forced `submit` tool returning CORRECT, INCORRECT or NOT_ATTEMPTED, and accuracy as the metric. The grader is bound through the `grader` model role (Epoch used gpt-5.6-terra at medium reasoning). Install with the `simpleqa` extra.
